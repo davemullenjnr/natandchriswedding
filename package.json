@@ -1,0 +1,25 @@
+{
+    "name": "davemullenjnr-portfolio",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "next": "latest",
+        "react": "latest",
+        "react-dom": "latest",
+        "styled-components": "^5.3.6"
+    },
+    "devDependencies": {
+        "@next/mdx": "^12.2.0",
+        "babel-plugin-styled-components": "^2.0.7",
+        "globals": "^16.0.0",
+        "gray-matter": "^4.0.3",
+        "next-mdx-remote": "^4.2.0",
+        "prettier": "^3.5.3"
+    }
+}
