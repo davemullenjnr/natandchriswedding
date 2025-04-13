@@ -47,7 +47,7 @@ export default function Home() {
       </MainContent>
       <ScrollingBanner />
       <RSVP>
-        <img src='/images/RSVP.svg' alt='RSVP' />
+        <img src='/images/rsvp.svg' alt='RSVP' />
       </RSVP>
     </>
   );
