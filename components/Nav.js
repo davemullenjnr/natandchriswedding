@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
-import { color, typography } from '@styles/index';
+import { breakpoint, color, typography } from '@styles/index';
 
 const Wrapper = styled.nav`
   display: flex;
@@ -11,13 +11,16 @@ const Wrapper = styled.nav`
   a {
     font-family: ${typography.family.title};
     text-transform: uppercase;
-    font-size: ${typography.size.f5};
+    font-size: ${typography.size.f6};
     text-decoration: none;
     color: ${color.white};
 
-    /* &:hover {
-      text-decoration: underline;
-    } */
+    @media ${breakpoint.sm} {
+      font-size: ${typography.size.f5};
+    }
+    @media ${breakpoint.md} {
+      font-size: ${typography.size.f4};
+    }
   }
 `;
 

@@ -7,30 +7,30 @@ const Container = styled.div`
   margin: 0 auto;
 `;
 
-const Title = styled.h2`
+const Main = styled.p`
   font-size: ${typography.size.f5};
   color: ${color.green[90]};
-  margin-bottom: 0.25em;
+  margin-bottom: 0.5em;
 
   @media ${breakpoint.md} {
     font-size: ${typography.size.f4};
   }
 `;
 
-const Subtitle = styled.p`
-  font-size: ${typography.size.f8};
+const Subtext = styled.p`
   color: ${color.green[70]};
+  font-size: ${typography.size.f8};
 
   @media ${breakpoint.md} {
     font-size: ${typography.size.f7};
   }
 `;
 
-export default function KeyInfoTextBlock({ title, subtitle }) {
+export default function RSVPTextBlock({ main, subtext }) {
   return (
     <Container>
-      <Title>{title}</Title>
-      <Subtitle>{subtitle}</Subtitle>
+      <Main>{main}</Main>
+      <Subtext>{subtext}</Subtext>
     </Container>
   );
 }

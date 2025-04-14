@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import SEO from '../components/SEO';
 import KeyInfoTextBlock from '@components/KeyInfoTextBlock';
 import ScrollingBanner from '@components/ScrollingBanner';
-import { Main } from 'next/document';
+import RSVPTextBlock from '@components/RSVPTextBlock';
 
 const IntroImage = styled.div`
   width: 66%;
@@ -13,16 +13,20 @@ const IntroImage = styled.div`
 `;
 
 const MainContent = styled.div`
-  margin: 4rem auto;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 4rem 0;
   width: fit-content;
   display: flex;
   flex-direction: column;
   gap: 2rem;
 `;
 
-const RSVP = styled.div`
-  margin: 4rem auto;
-  width: fit-content;
+const RSVPImage = styled.div`
+  width: 40%;
+  margin: 0 auto;
+  padding-top: 6rem;
+  max-width: 300px;
 `;
 
 export default function Home() {
@@ -46,9 +50,21 @@ export default function Home() {
         />
       </MainContent>
       <ScrollingBanner />
-      <RSVP>
+      <RSVPImage>
         <img src='/images/rsvp.svg' alt='RSVP' />
-      </RSVP>
+      </RSVPImage>
+      <MainContent>
+        <RSVPTextBlock
+          main={
+            <>
+              Please confirm via email
+              <br />
+              <b>thescottwedding@gmail.com</b>
+            </>
+          }
+          subtext='Please let us know by Friday 23rd May 2025'
+        />
+      </MainContent>
     </>
   );
 }

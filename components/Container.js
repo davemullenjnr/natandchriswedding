@@ -13,6 +13,7 @@ const Container = styled.div`
   }
 
   @media ${breakpoint.md} {
+    max-width: 1200px;
     padding: ${(props) => (props.noPadding ? '0' : '0 2rem')};
   }
 `;
