@@ -3,7 +3,8 @@ export const fallbackFonts = 'Roboto, sans-serif';
 
 // Font Family
 export const family = {
-  title: `Druk, ${fallbackFonts}`,
+  headline: `Druk, ${fallbackFonts}`,
+  title: `Recoleta, ${fallbackFonts}`,
   body: `Inter, ${fallbackFonts}`,
 };
 

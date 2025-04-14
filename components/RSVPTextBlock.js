@@ -8,12 +8,16 @@ const Container = styled.div`
 `;
 
 const Main = styled.p`
+  font-family: ${typography.family.title};
   font-size: ${typography.size.f5};
   color: ${color.green[90]};
-  margin-bottom: 0.5em;
+  margin-bottom: 0.25em;
 
   @media ${breakpoint.md} {
     font-size: ${typography.size.f4};
+  }
+  @media ${breakpoint.lg} {
+    font-size: ${typography.size.f3};
   }
 `;
 
@@ -23,6 +27,9 @@ const Subtext = styled.p`
 
   @media ${breakpoint.md} {
     font-size: ${typography.size.f7};
+  }
+  @media ${breakpoint.lg} {
+    font-size: ${typography.size.f6};
   }
 `;
 

@@ -9,7 +9,7 @@ const Wrapper = styled.nav`
   padding: 1rem 0rem;
 
   a {
-    font-family: ${typography.family.title};
+    font-family: ${typography.family.headline};
     text-transform: uppercase;
     font-size: ${typography.size.f6};
     text-decoration: none;

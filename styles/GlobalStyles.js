@@ -16,6 +16,18 @@ const GlobalStyles = createGlobalStyle`
     font-style: normal;
   }
   @font-face {
+    font-family: 'Recoleta';
+    src: url('/fonts/Recoleta-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Recoleta';
+    src: url('/fonts/Recoleta-Black.woff') format('woff');
+    font-weight: 800;
+    font-style: normal;
+  }
+  @font-face {
     font-family: 'Druk';
     src: url('/fonts/DrukTextWide-Super-Web.woff2') format('woff2');
     font-weight: 800;

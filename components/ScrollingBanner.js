@@ -50,22 +50,21 @@ const ScrollingText = styled.div`
 `;
 
 const Text = styled.p`
-  font-family: ${typography.family.title};
+  font-family: ${typography.family.headline};
   margin-right: 3em;
-  font-size: ${typography.size.f4};
+  font-size: ${typography.size.f5};
   text-transform: uppercase;
   color: ${color.green[90]};
   line-height: 1;
   letter-spacing: 0.05em;
-  -webkit-text-stroke: 1.25px ${color.green[70]};
+  -webkit-text-stroke: 1px ${color.green[80]};
 
   @media ${breakpoint.sm} {
     font-size: ${typography.size.f4};
-    -webkit-text-stroke: 1.25px ${color.green[70]};
+    -webkit-text-stroke: 1.25px ${color.green[80]};
   }
   @media ${breakpoint.md} {
     font-size: ${typography.size.f3};
-    -webkit-text-stroke: 1.25px ${color.green[70]};
   }
 `;
 
