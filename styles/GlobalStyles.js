@@ -98,7 +98,7 @@ body {
   padding: 0;
   font-family: 'Inter', sans-serif;
   background: #fff; /* override as needed */
-  color: ${color.green[100]};      /* override as needed */
+  color: ${color.green[90]};      /* override as needed */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   word-wrap: break-word;

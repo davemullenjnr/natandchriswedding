@@ -5,10 +5,10 @@ const Background = styled.div`
   background-image: url('/images/textured-paper.jpg');
   background-repeat: repeat;
   /* background-attachment: fixed; */
-  min-height: 100vh;
+  min-height: 80vh;
   width: 100%;
   box-shadow: 0 20px 20px rgba(0, 0, 0, 0.05);
-  padding-bottom: 2rem;
+  padding: 0rem 1rem 2rem 1rem;
 
   @media ${breakpoint.md} {
     padding-bottom: 4rem;

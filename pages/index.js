@@ -4,6 +4,7 @@ import SEO from '../components/SEO';
 import KeyInfoTextBlock from '@components/KeyInfoTextBlock';
 import ScrollingBanner from '@components/ScrollingBanner';
 import RSVPTextBlock from '@components/RSVPTextBlock';
+import RSVPForm from '@components/RSVPForm';
 
 const IntroImage = styled.div`
   width: 66%;
@@ -57,14 +58,16 @@ export default function Home() {
         <RSVPTextBlock
           main={
             <>
-              Please confirm via email
-              <br />
-              <b>thescottwedding@gmail.com</b>
+              <b>
+                Please complete the form below to let us know if you can make
+                it.
+              </b>
             </>
           }
-          subtext='Please let us know by Friday 23rd May 2025'
+          subtext='Deadline: Friday 23rd May 2025'
         />
       </MainContent>
+      <RSVPForm />
     </>
   );
 }

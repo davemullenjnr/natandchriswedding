@@ -1,15 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
-import { breakpoint, color, typography } from '@styles/index';
+import { breakpoint, color, typography, width } from '@styles/index';
 
 const Container = styled.div`
   text-align: center;
   margin: 0 auto;
+  max-width: 75%;
+
+  @media ${breakpoint.md} {
+    max-width: ${width.xs}rem;
+  }
 `;
 
 const Main = styled.p`
   font-family: ${typography.family.title};
-  font-size: ${typography.size.f5};
+  font-size: ${typography.size.f6};
   color: ${color.green[90]};
   margin-bottom: 0.25em;
 
@@ -17,7 +22,7 @@ const Main = styled.p`
     font-size: ${typography.size.f4};
   }
   @media ${breakpoint.lg} {
-    font-size: ${typography.size.f3};
+    font-size: ${typography.size.f4};
   }
 `;
 

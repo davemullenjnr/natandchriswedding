@@ -1,6 +1,6 @@
 // Mono
 export const white = '#FFFFFF';
-export const black = '#292727';
+export const black = '#1d2f20';
 
 // Mono
 export const green = {
