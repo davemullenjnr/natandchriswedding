@@ -6,6 +6,7 @@ import Container from '@components/Container';
 import Background from '@components/Background';
 import Nav from '@components/Nav';
 import Paper from '@components/Paper';
+import Footer from '@components/Footer';
 
 const theme = {
   colors: {
@@ -29,6 +30,7 @@ export default function App({ Component, pageProps }) {
             <Paper>
               <Component {...pageProps} />
             </Paper>
+            <Footer />
           </Container>
         </Background>
       </ThemeProvider>

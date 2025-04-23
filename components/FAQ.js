@@ -5,16 +5,18 @@ import { breakpoint, color, typography, width } from '@styles/index';
 const Container = styled.div`
   text-align: center;
   margin: 0 auto;
-  max-width: 75%;
+  max-width: 90%;
 
-  @media ${breakpoint.md} {
+  /* @media ${breakpoint.md} {
     max-width: ${width.xs}rem;
-  }
+  } */
 `;
 
-const Main = styled.p`
+const Question = styled.p`
   font-family: ${typography.family.title};
+  font-weight: bold;
   font-size: ${typography.size.f6};
+  line-height: 1.2;
   color: ${color.green[90]};
   margin-bottom: 0.25em;
 
@@ -29,9 +31,10 @@ const Main = styled.p`
   }
 `;
 
-const Subtext = styled.p`
+const Answer = styled.p`
   color: ${color.green[70]};
   font-size: ${typography.size.f8};
+  line-height: 1.5;
 
   @media ${breakpoint.sm} {
     font-size: ${typography.size.f7};
@@ -44,11 +47,11 @@ const Subtext = styled.p`
   }
 `;
 
-export default function RSVPTextBlock({ main, subtext }) {
+export default function FAQ({ question, answer }) {
   return (
     <Container>
-      <Main>{main}</Main>
-      <Subtext>{subtext}</Subtext>
+      {question && <Question>{question}</Question>}
+      <Answer>{answer}</Answer>
     </Container>
   );
 }

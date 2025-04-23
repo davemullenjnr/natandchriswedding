@@ -11,7 +11,7 @@ const Wrapper = styled.nav`
   a {
     font-family: ${typography.family.headline};
     text-transform: uppercase;
-    font-size: ${typography.size.f6};
+    font-size: ${typography.size.f7};
     text-decoration: none;
     color: ${color.white};
 
@@ -31,14 +31,20 @@ const NavLink = styled.p`
 export default function Nav() {
   return (
     <Wrapper>
-      <Link href='/' passHref>
-        <NavLink>Home</NavLink>
-      </Link>
-      <Link href='/faqs' passHref>
+      {/* <Link href='/' passHref>
+        <NavLink>Top</NavLink>
+      </Link> */}
+      <Link href='#faqs' passHref>
         <NavLink>FAQs</NavLink>
       </Link>
-      <Link href='/location' passHref>
-        <NavLink>Location</NavLink>
+      <Link href='#travel' passHref>
+        <NavLink>Travel</NavLink>
+      </Link>
+      <Link href='#gifts' passHref>
+        <NavLink>Gifts</NavLink>
+      </Link>
+      <Link href='#rsvp' passHref>
+        <NavLink>RSVP</NavLink>
       </Link>
     </Wrapper>
   );

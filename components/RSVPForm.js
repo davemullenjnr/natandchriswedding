@@ -1,7 +1,11 @@
 // components/RSVPForm.js
-import { color, pixels, radius, typography } from '@styles/index';
+import { breakpoint, color, pixels, radius, typography } from '@styles/index';
 import React, { useState } from 'react';
 import styled from 'styled-components';
+
+const FormContainer = styled.div`
+  padding-bottom: 4rem;
+`;
 
 const FormWrapper = styled.form`
   max-width: 600px;
@@ -15,6 +19,13 @@ const FormWrapper = styled.form`
     display: flex;
     flex-direction: column;
     font-size: ${typography.size.f7};
+
+    @media ${breakpoint.sm} {
+      font-size: ${typography.size.f6};
+    }
+    @media ${breakpoint.md} {
+      font-size: ${typography.size.f5};
+    }
   }
 
   label span {
@@ -32,11 +43,18 @@ const FormWrapper = styled.form`
   select,
   textarea {
     font-family: ${typography.family.body};
-    font-size: 0.8rem;
+    font-size: ${typography.size.f8};
     color: ${color.green[90]};
     padding: 0.75rem;
     border-radius: ${radius.md};
-    border: ${pixels.one} solid ${color.green[40]};
+    border: ${pixels.one} solid ${color.green[60]};
+
+    @media ${breakpoint.sm} {
+      font-size: ${typography.size.f7};
+    }
+    @media ${breakpoint.md} {
+      font-size: ${typography.size.f6};
+    }
   }
 
   input::placeholder,
@@ -44,12 +62,6 @@ const FormWrapper = styled.form`
     color: ${color.green[60]};
     font-style: italic;
     opacity: 1; /* default is 0.5 in some browsers */
-  }
-
-  small {
-    font-size: 0.7rem;
-    color: ${color.green[80]};
-    margin-top: 0.25rem;
   }
 
   button {
@@ -94,7 +106,15 @@ const Input = styled.input`
 
 const Select = styled.select`
   width: 100%;
-  padding: 0.5rem;
+  padding: 0.75rem;
+  -webkit-appearance: none; /* minimal impact on arrow, removes shading */
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('/images/down.svg');
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.1rem;
+  padding-right: 2rem;
 `;
 
 const Textarea = styled.textarea`
@@ -105,8 +125,12 @@ const Textarea = styled.textarea`
 
 const HelperText = styled.p`
   font-size: 0.75rem;
-  color: #666;
-  margin-top: 0.2rem;
+  color: ${color.green[70]};
+  margin-top: 0.3rem;
+
+  @media ${breakpoint.md} {
+    font-size: 0.85rem;
+  }
 `;
 
 const Button = styled.button``;
@@ -123,103 +147,105 @@ const RSVPForm = () => {
   };
 
   return (
-    <FormWrapper action={formAction} method='POST'>
-      <Group>
-        <Label>Will you be attending?</Label>
-        <Select
-          name='attending'
-          value={attending}
-          required
-          onChange={(e) => setAttending(e.target.value)}
-        >
-          <option value=''>Select an option</option>
-          <option value='yes'>Yes</option>
-          <option value='no'>No</option>
-        </Select>
-      </Group>
+    <FormContainer>
+      <FormWrapper action={formAction} method='POST'>
+        <Group>
+          <Label>Will you be attending?</Label>
+          <Select
+            name='attending'
+            value={attending}
+            required
+            onChange={(e) => setAttending(e.target.value)}
+          >
+            <option value=''>Select an option</option>
+            <option value='yes'>Yes</option>
+            <option value='no'>No</option>
+          </Select>
+        </Group>
 
-      {attending === 'no' && (
-        <>
-          <Group>
-            <Label htmlFor='guestName'>Your Name</Label>
-            <Input type='text' id='guestName' name='guest_1_name' required />
-          </Group>
-          <Group>
-            <Label htmlFor='message'>Leave us a message (optional)</Label>
-            <Textarea id='message' name='message' />
-          </Group>
-        </>
-      )}
-
-      {attending === 'yes' && (
-        <>
-          <Group>
-            <Label htmlFor='numGuests'>
-              How many people are you RSVPing for?
-            </Label>
-            <Select
-              id='numGuests'
-              name='number_of_guests'
-              value={numGuests}
-              onChange={(e) => setNumGuests(Number(e.target.value))}
-              required
-            >
-              {[1, 2, 3, 4].map((num) => (
-                <option key={num} value={num}>
-                  {num}
-                </option>
-              ))}
-            </Select>
-          </Group>
-          {Array.from({ length: numGuests }).map((_, idx) => (
+        {attending === 'no' && (
+          <>
             <Group>
-              <div key={idx}>
-                <Label htmlFor={`guestName${idx}`}>
-                  Guest {idx + 1} Full Name
-                </Label>
-                <Input
-                  type='text'
-                  id={`guestName${idx}`}
-                  name={`guest_${idx + 1}_name`}
-                  required
-                />
-
-                <Label htmlFor={`guestDiet${idx}`}>
-                  Guest {idx + 1} Dietary Requirements
-                </Label>
-                <Input
-                  type='text'
-                  id={`guestDiet${idx}`}
-                  name={`guest_${idx + 1}_diet`}
-                />
-                <HelperText>
-                  e.g. vegetarian, gluten-free, nut allergy
-                </HelperText>
-              </div>
+              <Label htmlFor='guestName'>Your Name</Label>
+              <Input type='text' id='guestName' name='guest_1_name' required />
             </Group>
-          ))}
-          <Group>
-            <Label htmlFor='message'>Any additional message?</Label>
-            <Textarea id='message' name='message' />
-          </Group>
-        </>
-      )}
+            <Group>
+              <Label htmlFor='message'>Leave us a message (optional)</Label>
+              <Textarea id='message' name='message' />
+            </Group>
+          </>
+        )}
 
-      {attending && (
-        <>
-          <input
-            type='hidden'
-            name='_redirect'
-            value={
-              attending === 'yes'
-                ? 'http://localhost:3000/attending'
-                : 'http://localhost:3000/not-attending'
-            }
-          />
-          <Button type='submit'>Submit RSVP</Button>
-        </>
-      )}
-    </FormWrapper>
+        {attending === 'yes' && (
+          <>
+            <Group>
+              <Label htmlFor='numGuests'>
+                How many people are you RSVPing for?
+              </Label>
+              <Select
+                id='numGuests'
+                name='number_of_guests'
+                value={numGuests}
+                onChange={(e) => setNumGuests(Number(e.target.value))}
+                required
+              >
+                {[1, 2, 3, 4].map((num) => (
+                  <option key={num} value={num}>
+                    {num}
+                  </option>
+                ))}
+              </Select>
+            </Group>
+            {Array.from({ length: numGuests }).map((_, idx) => (
+              <Group>
+                <div key={idx}>
+                  <Label htmlFor={`guestName${idx}`}>
+                    Guest {idx + 1} – Full Name
+                  </Label>
+                  <Input
+                    type='text'
+                    id={`guestName${idx}`}
+                    name={`guest_${idx + 1}_name`}
+                    required
+                  />
+
+                  <Label htmlFor={`guestDiet${idx}`}>
+                    Guest {idx + 1} – Dietary Requirements
+                  </Label>
+                  <Input
+                    type='text'
+                    id={`guestDiet${idx}`}
+                    name={`guest_${idx + 1}_diet`}
+                  />
+                  <HelperText>
+                    e.g. vegetarian, gluten-free, nut allergy
+                  </HelperText>
+                </div>
+              </Group>
+            ))}
+            <Group>
+              <Label htmlFor='message'>Any additional message?</Label>
+              <Textarea id='message' name='message' />
+            </Group>
+          </>
+        )}
+
+        {attending && (
+          <>
+            <input
+              type='hidden'
+              name='_redirect'
+              value={
+                attending === 'yes'
+                  ? 'https://thescottwedding.co.uk/attending'
+                  : 'https://thescottwedding.co.uk/not-attending'
+              }
+            />
+            <Button type='submit'>Submit RSVP</Button>
+          </>
+        )}
+      </FormWrapper>
+    </FormContainer>
   );
 };
 
