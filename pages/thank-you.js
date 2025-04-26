@@ -2,15 +2,17 @@
 import AttendanceResponse from '@components/AttendanceResponse';
 import Head from 'next/head';
 
-export default function Attending() {
+export default function ThankYou() {
   return (
     <>
       <Head>
-        <title>Thank You – RSVP</title>
+        <title>Thank You</title>
       </Head>
       <AttendanceResponse title='Thank You!'>
-        <p>We're so happy you'll be joining us on our special day.</p>
-        <p>We'll be in touch with more details soon.</p>
+        <p>
+          Thank you so much for your wedding gift! We really appreciate it and
+          will thank you personally soon.
+        </p>
       </AttendanceResponse>
     </>
   );

@@ -7,6 +7,7 @@ import RSVPTextBlock from '@components/RSVPTextBlock';
 import RSVPForm from '@components/RSVPForm';
 import FAQ from '@components/FAQ';
 import { breakpoint, color, typography, width } from '@styles/index';
+import GiftButton from '@components/GiftButton';
 
 const IntroImage = styled.div`
   width: 66%;
@@ -30,6 +31,7 @@ const MainContent = styled.div`
   }
   @media ${breakpoint.md} {
     max-width: ${width.md}rem;
+    padding: ${({ keyInfo }) => (keyInfo ? '6rem 0' : '4rem 0')};
   }
 `;
 
@@ -52,6 +54,10 @@ const TitleImage = styled.div`
   }
 `;
 
+const GiftButtonWrapper = styled.div`
+  margin: 0 auto;
+`;
+
 export default function Home() {
   return (
     <>
@@ -62,7 +68,7 @@ export default function Home() {
       <IntroImage>
         <img src='/images/natandchris.svg' alt='Natalie and Chris' />
       </IntroImage>
-      <MainContent>
+      <MainContent keyInfo>
         <KeyInfoTextBlock
           title='Friday 5th September 2025'
           subtitle='Arrival Time: 12:30 – 1:00pm'
@@ -117,7 +123,9 @@ export default function Home() {
         </TitleImage>
         <MainContent biggerGap>
           <FAQ answer='Your presence at our wedding is the greatest gift of all. However, if you would like to give us a gift, we would appreciate contributions towards our honeymoon.' />
-          <FAQ answer='[link goes here]' />
+          <GiftButtonWrapper>
+            <GiftButton />
+          </GiftButtonWrapper>
         </MainContent>
       </div>
       <div id='rsvp'>

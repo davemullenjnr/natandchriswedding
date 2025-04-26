@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { color } from '.';
+import { breakpoint, color, typography } from '.';
 
 const GlobalStyles = createGlobalStyle`
       /* Import custom fonts */
@@ -102,6 +102,16 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   word-wrap: break-word;
+  font-size: ${typography.size.f7};
+      @media ${breakpoint.sm} {
+        font-size: ${typography.size.f6};
+      }
+      @media ${breakpoint.md} {
+        font-size: ${typography.size.f5};
+      }
+      @media ${breakpoint.lg} {
+        font-size: ${typography.size.f4};
+      }
 }
 
 b {

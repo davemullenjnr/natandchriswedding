@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { breakpoint, color, typography } from '@styles/index';
 
 const Wrapper = styled.nav`
@@ -29,23 +30,35 @@ const NavLink = styled.p`
 `;
 
 export default function Nav() {
+  const router = useRouter();
+  const isHome = router.pathname === '/';
+
+  // Build the nav items
+  const navItems = [
+    { label: 'FAQs', href: '#faqs' },
+    { label: 'Travel', href: '#travel' },
+    { label: 'Gifts', href: '#gifts' },
+    { label: 'RSVP', href: '#rsvp' },
+  ];
+
+  // On non-home pages, modify the hrefs to point to /#section
+  const itemsToRender = isHome
+    ? navItems
+    : [
+        { label: 'Home', href: '/' },
+        ...navItems.map((item) => ({
+          ...item,
+          href: `/${item.href}`,
+        })),
+      ];
+
   return (
     <Wrapper>
-      {/* <Link href='/' passHref>
-        <NavLink>Top</NavLink>
-      </Link> */}
-      <Link href='#faqs' passHref>
-        <NavLink>FAQs</NavLink>
-      </Link>
-      <Link href='#travel' passHref>
-        <NavLink>Travel</NavLink>
-      </Link>
-      <Link href='#gifts' passHref>
-        <NavLink>Gifts</NavLink>
-      </Link>
-      <Link href='#rsvp' passHref>
-        <NavLink>RSVP</NavLink>
-      </Link>
+      {itemsToRender.map(({ label, href }) => (
+        <Link key={label} href={href} passHref>
+          <NavLink>{label}</NavLink>
+        </Link>
+      ))}
     </Wrapper>
   );
 }
