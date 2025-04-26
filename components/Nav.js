@@ -12,12 +12,12 @@ const Wrapper = styled.nav`
   a {
     font-family: ${typography.family.headline};
     text-transform: uppercase;
-    font-size: ${typography.size.f7};
+    font-size: ${typography.size.f8};
     text-decoration: none;
     color: ${color.white};
 
     @media ${breakpoint.sm} {
-      font-size: ${typography.size.f5};
+      font-size: ${typography.size.f6};
     }
     @media ${breakpoint.md} {
       font-size: ${typography.size.f4};
