@@ -36,6 +36,20 @@ const AnswerGroup = styled.div`
     list-style: none;
     padding-left: 0;
     margin: 0;
+
+    color: ${color.green[70]};
+    font-size: ${typography.size.f8};
+    line-height: 1.5;
+
+    @media ${breakpoint.sm} {
+      font-size: ${typography.size.f7};
+    }
+    @media ${breakpoint.md} {
+      font-size: ${typography.size.f6};
+    }
+    @media ${breakpoint.lg} {
+      font-size: ${typography.size.f5};
+    }
   }
 `;
 
