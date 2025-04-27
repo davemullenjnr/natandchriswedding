@@ -67,7 +67,7 @@ export default function Home() {
   ];
   const lyricsTwo = [
     'Tears and fears and feeling proud',
-    'To say, "I love you, " right out loud',
+    'To say "I love you" right out loud',
     'Dreams and schemes and circus crowds',
     "I've looked at life that way",
   ];
