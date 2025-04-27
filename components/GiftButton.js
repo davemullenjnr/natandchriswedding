@@ -35,7 +35,7 @@ const Button = styled.a`
 export default function GiftButton() {
   return (
     <Button
-      href='https://buy.stripe.com/00geWSgKKfXv0XCbIJ'
+      href='https://buy.stripe.com/14k9Bd0l61NO1faaEE'
       target='_blank'
       rel='noopener noreferrer'
     >

@@ -31,6 +31,18 @@ const Question = styled.p`
   }
 `;
 
+const AnswerGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+  }
+`;
+
 const Answer = styled.p`
   color: ${color.green[70]};
   font-size: ${typography.size.f8};
@@ -48,10 +60,15 @@ const Answer = styled.p`
 `;
 
 export default function FAQ({ question, answer }) {
+  const answers = Array.isArray(answer) ? answer : [answer];
   return (
     <Container>
       {question && <Question>{question}</Question>}
-      <Answer>{answer}</Answer>
+      <AnswerGroup>
+        {answers.map((text, index) => (
+          <Answer key={index}>{text}</Answer>
+        ))}
+      </AnswerGroup>
     </Container>
   );
 }

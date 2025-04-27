@@ -59,6 +59,19 @@ const GiftButtonWrapper = styled.div`
 `;
 
 export default function Home() {
+  const lyricsOne = [
+    'Moons and Junes and Ferris wheels',
+    'The dizzy dancing way that you feel',
+    'As every fairy tale comes real',
+    "I've looked at love that way",
+  ];
+  const lyricsTwo = [
+    'Tears and fears and feeling proud',
+    'To say, "I love you, " right out loud',
+    'Dreams and schemes and circus crowds',
+    "I've looked at life that way",
+  ];
+
   return (
     <>
       <SEO
@@ -78,7 +91,7 @@ export default function Home() {
           subtitle='18-20 Castle St, Manchester, M3 4LZ'
         />
       </MainContent>
-      <ScrollingBanner />
+      <ScrollingBanner textItems={lyricsOne} />
       <div id='faqs'>
         <TitleImage>
           <img src='/images/faqs.svg' alt='FAQs' />
@@ -86,10 +99,14 @@ export default function Home() {
         <MainContent biggerGap>
           <FAQ
             question='Are kids welcome?'
-            answer='As much as we love your little ones, we will not be including them in the ceremony or reception (apart from close family). We want guests to be able to let their hair down and party with us :)'
+            answer='To allow all guests to relax and enjoy the day, we are having an adults-only celebration, with a few close family children in attendance. Thank you for understanding!'
           />
           <FAQ
-            question='Is it okay to take pictures with our phones and cameras during the wedding?'
+            question="Where's the meeting point when I arrive?"
+            answer='The ceremony will be in the Brindley Room. Guests should enter via the external staircase on Castle Street, and the bar will be open in the Brindley Room before the ceremony. The evening reception will be held in the Merchant Room.'
+          />
+          <FAQ
+            question='Is it okay to take pictures during the wedding?'
             answer='Yes! We would love for you to take photos and share them with us. Please note that photos are not allowed during the ceremony.'
           />
           <FAQ
@@ -104,19 +121,52 @@ export default function Home() {
         </TitleImage>
         <MainContent biggerGap>
           <FAQ
-            question='Getting to the venue'
-            answer='The Castlefield Rooms is located in the heart of Manchester, easily accessible by public transport. The nearest train station is Deansgate, which is a 10-minute walk away.'
+            question='Public Transport'
+            answer={[
+              'The closest train station is Deansgate, just a 5-minute walk from the venue.',
+              "If you're arriving at Piccadilly Station there’s a free bus right outside the exit near 'Boots.' Hop on bus number 1 to Liverpool Road / Barton Street (Stop WO), and the venue is a 5-minute walk from there.",
+            ]}
           />
           <FAQ
             question='Parking'
-            answer='There are several car parks nearby, including the NCP on Great Northern Warehouse and the Q-Park on Deansgate.'
+            answer='The closest parking is at Duke Street (M3 4RU). There are also a limited number of spaces at the venue.'
           />
           <FAQ
             question='Accommodation'
-            answer='There are several hotels nearby, including the Hilton Manchester Deansgate and the Radisson Blu Edwardian.'
+            answer={[
+              <>
+                <ul>
+                  <li>
+                    <a href='https://www.hilton.com/en/hotels/mandghi-hilton-manchester-deansgate/'>
+                      <b>Hilton Manchester Deansgate</b>
+                    </a>{' '}
+                    (M3 4LQ) - <i>5 min walk</i>
+                  </li>
+                  <li>
+                    <a href='https://www.melia.com/en/hotels/united-kingdom/manchester/innside-manchester'>
+                      <b>Innside by Melia</b>
+                    </a>{' '}
+                    (M15 4RP) - <i>8 min walk</i>
+                  </li>
+                  <li>
+                    <a href='https://www.leonardohotels.co.uk/manchester/leonardo-hotel-manchester-central'>
+                      <b>Leonardo Hotel Manchester Central</b>
+                    </a>{' '}
+                    (M1 5LE) - <i>9 min walk</i>
+                  </li>
+                  <li>
+                    <a href='https://www.edwardian.com/hotels/the-edwardian-manchester'>
+                      <b>Radisson Edwardian</b>
+                    </a>{' '}
+                    (M2 5GP) - <i>12 min walk</i>
+                  </li>
+                </ul>
+              </>,
+            ]}
           />
         </MainContent>
       </div>
+      <ScrollingBanner textItems={lyricsTwo} />
       <div id='gifts'>
         <TitleImage>
           <img src='/images/gifts.svg' alt='Gifts' />

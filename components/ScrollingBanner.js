@@ -4,13 +4,6 @@ import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { breakpoint, color, typography } from '@styles/index'; // Adjust the import path as necessary
 
-const textItems = [
-  ' Til Death Do Us Part',
-  'There Is A Light That Never Goes Out',
-  'To Have And To Hold',
-  'To The Ends Of The Earth',
-];
-
 const scrollText = keyframes`
   from {
     transform: translateX(0);
@@ -26,6 +19,8 @@ const BannerWrapper = styled.div`
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   width: 100vw;
   background-color: ${color.green[90]};
   overflow: hidden;
@@ -47,6 +42,7 @@ const ScrollingText = styled.div`
   width: max-content;
   white-space: nowrap;
   animation: ${scrollText} 30s linear infinite;
+  padding-left: 20rem;
 `;
 
 const Text = styled.p`
@@ -68,7 +64,7 @@ const Text = styled.p`
   }
 `;
 
-const ScrollingBanner = () => {
+const ScrollingBanner = ({ textItems = [] }) => {
   return (
     <BannerWrapper>
       <ScrollingText>
