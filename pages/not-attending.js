@@ -11,9 +11,8 @@ export default function NotAttending() {
       <AttendanceResponse title='Thank You!'>
         <p>
           We're sorry you can't make it, but we really appreciate you letting us
-          know.
+          know. We'll be thinking of you on the day ❤️
         </p>
-        <p>We'll be thinking of you on the day ❤️</p>
       </AttendanceResponse>
     </>
   );

@@ -6,10 +6,6 @@ const Container = styled.div`
   text-align: center;
   margin: 0 auto;
   max-width: 90%;
-
-  /* @media ${breakpoint.md} {
-    max-width: ${width.xs}rem;
-  } */
 `;
 
 const Question = styled.p`
@@ -61,13 +57,18 @@ const Answer = styled.p`
 
 export default function FAQ({ question, answer }) {
   const answers = Array.isArray(answer) ? answer : [answer];
+
   return (
     <Container>
       {question && <Question>{question}</Question>}
       <AnswerGroup>
-        {answers.map((text, index) => (
-          <Answer key={index}>{text}</Answer>
-        ))}
+        {answers.map((text, index) =>
+          typeof text === 'string' ? (
+            <Answer key={index}>{text}</Answer> // wrap strings in <p>
+          ) : (
+            <div key={index}>{text}</div> // render JSX (e.g., <ul>) directly
+          ),
+        )}
       </AnswerGroup>
     </Container>
   );
