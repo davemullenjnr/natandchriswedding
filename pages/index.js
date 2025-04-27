@@ -75,8 +75,8 @@ export default function Home() {
   return (
     <>
       <SEO
-        title='Natalie And Chris Wedding'
-        description='Natalie and Chris wedding website.'
+        title='Natalie And Chris Wedding Invite'
+        description='Please join us for our wedding on Friday 5th September 2025 at The Castlefield Rooms, Manchester.'
       />
       <IntroImage>
         <img src='/images/natandchris.svg' alt='Natalie and Chris' />

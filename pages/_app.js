@@ -19,7 +19,7 @@ export default function App({ Component, pageProps }) {
     <>
       <Head>
         <meta name='viewport' content='width=device-width, initial-scale=1' />
-        <title>Natalie And Chris Wedding</title>
+        <title>Natalie And Chris Wedding Invite</title>
         {/* Override meta tags on individual pages as needed */}
       </Head>
       <ThemeProvider theme={theme}>
