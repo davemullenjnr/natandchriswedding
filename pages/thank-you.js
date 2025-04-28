@@ -1,4 +1,3 @@
-// pages/thank-you-attending.js
 import AttendanceResponse from '@components/AttendanceResponse';
 import Head from 'next/head';
 
@@ -6,12 +5,11 @@ export default function ThankYou() {
   return (
     <>
       <Head>
-        <title>Thank You</title>
+        <title>Thank You For Your Gift!</title>
       </Head>
       <AttendanceResponse title='Thank You!'>
         <p>
-          Thank you so much for your wedding gift! We really appreciate it and
-          will thank you personally soon.
+          Thank you so much for your wedding gift! We’re extremely grateful 🙏
         </p>
       </AttendanceResponse>
     </>

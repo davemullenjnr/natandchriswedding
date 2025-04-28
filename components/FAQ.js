@@ -38,8 +38,8 @@ const AnswerGroup = styled.div`
     margin: 0;
 
     color: ${color.green[70]};
-    font-size: ${typography.size.f8};
-    line-height: 1.5;
+    font-size: 0.6rem;
+    line-height: 1.8;
 
     @media ${breakpoint.sm} {
       font-size: ${typography.size.f7};

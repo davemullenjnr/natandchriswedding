@@ -6,11 +6,13 @@ export default function Attending() {
   return (
     <>
       <Head>
-        <title>Thank You – RSVP</title>
+        <title>Attending – RSVP</title>
       </Head>
       <AttendanceResponse title='Thank You!'>
-        <p>We're so happy you'll be joining us on our special day.</p>
-        <p>We'll be in touch with more details soon.</p>
+        <p>
+          We’re so happy you’ll be joining us on our special day. We can’t to
+          party with you!
+        </p>
       </AttendanceResponse>
     </>
   );

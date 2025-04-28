@@ -6,7 +6,7 @@ export default function NotAttending() {
   return (
     <>
       <Head>
-        <title>Thank You – RSVP</title>
+        <title>Not Attending – RSVP</title>
       </Head>
       <AttendanceResponse title='Thank You!'>
         <p>

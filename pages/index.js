@@ -59,18 +59,13 @@ const GiftButtonWrapper = styled.div`
 `;
 
 export default function Home() {
-  const lyricsOne = [
-    'Moons and Junes and Ferris wheels',
-    'The dizzy dancing way that you feel',
-    'As every fairy tale comes real',
-    "I've looked at love that way",
-  ];
-  const lyricsTwo = [
-    'Tears and fears and feeling proud',
-    'To say "I love you" right out loud',
-    'Dreams and schemes and circus crowds',
-    "I've looked at life that way",
-  ];
+  const lyricsOne = ['F.E.E.L.I.N.G.C.A.L.L.E.D.L.O.V.E'];
+  // const lyricsTwo = [
+  //   'Tears and fears and feeling proud',
+  //   'To say "I love you" right out loud',
+  //   'Dreams and schemes and circus crowds',
+  //   "I've looked at life that way",
+  // ];
 
   return (
     <>
@@ -99,20 +94,25 @@ export default function Home() {
         <MainContent biggerGap>
           <FAQ
             question='Are kids welcome?'
-            answer='To allow all guests to relax and enjoy the day, we are having an adults-only celebration, with a few close family children in attendance. Thank you for understanding!'
+            answer='We want you to relax and enjoy the day, so it’s an adults-only celebration, with a few close family children in attendance.'
           />
           <FAQ
             question="Where's the meeting point when I arrive?"
-            answer='The ceremony will be in the Brindley Room. Guests should enter via the external staircase on Castle Street, and the bar will be open in the Brindley Room before the ceremony. The evening reception will be held in the Merchant Room.'
+            answer='The ceremony will be in the Brindley Room. You should enter via the external staircase on Castle Street, and the bar will be open in the Brindley Room before the ceremony. The evening reception will be held in the Merchant Room.'
+          />
+          <FAQ
+            question='What food will be available on the day?'
+            answer='Once RSVP’d we will send a couple of menu options to you.'
+          />
+          <FAQ
+            question='What is the dress code?'
+            answer='Dress to impress and get ready to party!'
           />
           <FAQ
             question='Is it okay to take pictures during the wedding?'
             answer='Yes! We would love for you to take photos and share them with us. Please note that photos are not allowed during the ceremony.'
           />
-          <FAQ
-            answer="If you have a question that we haven't answered here, just send us a
-            message :)"
-          />
+          <FAQ answer='Please drop us a message if you have any other questions' />
         </MainContent>
       </div>
       <div id='travel'>
@@ -124,7 +124,7 @@ export default function Home() {
             question='Public Transport'
             answer={[
               'The closest train station is Deansgate, just a 5-minute walk from the venue.',
-              "If you're arriving at Piccadilly Station there’s a free bus right outside the exit near 'Boots.' Hop on bus number 1 to Liverpool Road / Barton Street (Stop WO), and the venue is a 5-minute walk from there.",
+              "If you're arriving at Piccadilly Station, use the main exit (next to boots) and directly outside just down the approach, there’s a free bus. Hop on bus number 1 to Liverpool Road / Barton Street (Stop WO), and the venue is a 5-minute walk from there.",
             ]}
           />
           <FAQ
@@ -166,7 +166,7 @@ export default function Home() {
           />
         </MainContent>
       </div>
-      <ScrollingBanner textItems={lyricsTwo} />
+      <ScrollingBanner textItems={lyricsOne} />
       <div id='gifts'>
         <TitleImage>
           <img src='/images/gifts.svg' alt='Gifts' />

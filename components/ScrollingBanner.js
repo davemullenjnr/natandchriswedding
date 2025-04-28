@@ -42,17 +42,17 @@ const ScrollingText = styled.div`
   width: max-content;
   white-space: nowrap;
   animation: ${scrollText} 30s linear infinite;
-  padding-left: 20rem;
+  /* padding-left: 20rem; */
 `;
 
 const Text = styled.p`
   font-family: ${typography.family.headline};
-  margin-right: 3em;
+  margin-right: 4em;
   font-size: ${typography.size.f5};
   text-transform: uppercase;
   color: ${color.green[90]};
   line-height: 1;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
   -webkit-text-stroke: 1px ${color.green[80]};
 
   @media ${breakpoint.sm} {
@@ -65,10 +65,11 @@ const Text = styled.p`
 `;
 
 const ScrollingBanner = ({ textItems = [] }) => {
+  const repeatedTextItems = Array(10).fill(textItems).flat();
   return (
     <BannerWrapper>
       <ScrollingText>
-        {textItems.concat(textItems).map((text, index) => (
+        {repeatedTextItems.map((text, index) => (
           <Text key={index}>{text}</Text>
         ))}
       </ScrollingText>
