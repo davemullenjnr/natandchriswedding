@@ -59,7 +59,11 @@ const GiftButtonWrapper = styled.div`
 `;
 
 export default function Home() {
-  const lyricsOne = ['F.E.E.L.I.N.G.C.A.L.L.E.D.L.O.V.E'];
+  const lyricsOne = [
+    'F.E.E.L.I.N.G.C.A.L.L.E.D.L.O.V.E',
+    'F.E.E.L.I.N.G.C.A.L.L.E.D.L.O.V.E',
+    'F.E.E.L.I.N.G.C.A.L.L.E.D.L.O.V.E',
+  ];
   // const lyricsTwo = [
   //   'Tears and fears and feeling proud',
   //   'To say "I love you" right out loud',
