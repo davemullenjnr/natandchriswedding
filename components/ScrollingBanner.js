@@ -39,7 +39,7 @@ const BannerWrapper = styled.div`
 const ScrollingTrack = styled.div`
   display: flex;
   width: fit-content;
-  animation: ${scrollText} 10s linear infinite;
+  animation: ${scrollText} 15s linear infinite;
 `;
 
 const ScrollingItem = styled.div`
