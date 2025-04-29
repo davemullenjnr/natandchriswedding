@@ -1,4 +1,4 @@
-'use client'; // if you're using app directory in Next.js 13+
+'use client';
 
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
@@ -9,7 +9,7 @@ const scrollText = keyframes`
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-100%);
+    transform: translateX(-33.3333%);
   }
 `;
 
@@ -24,7 +24,6 @@ const BannerWrapper = styled.div`
   width: 100vw;
   background-color: ${color.green[90]};
   overflow: hidden;
-  position: relative;
   padding: 1.5rem 0;
   white-space: nowrap;
   box-shadow: 0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.15);
@@ -37,11 +36,14 @@ const BannerWrapper = styled.div`
   }
 `;
 
-const ScrollingText = styled.div`
-  display: inline-flex;
-  white-space: nowrap;
-  animation: ${scrollText} 30s linear infinite;
-  /* padding-left: 20rem; */
+const ScrollingTrack = styled.div`
+  display: flex;
+  width: fit-content;
+  animation: ${scrollText} 10s linear infinite;
+`;
+
+const ScrollingItem = styled.div`
+  display: flex;
 `;
 
 const Text = styled.p`
@@ -64,17 +66,25 @@ const Text = styled.p`
 `;
 
 const ScrollingBanner = ({ textItems = [] }) => {
-  const repeatedTextItems = Array(10).fill(textItems).flat();
   return (
     <BannerWrapper>
-      <ScrollingText>
-        {textItems.map((text, index) => (
-          <Text key={`first-${index}`}>{text}</Text>
-        ))}
-        {textItems.map((text, index) => (
-          <Text key={`second-${index}`}>{text}</Text>
-        ))}
-      </ScrollingText>
+      <ScrollingTrack>
+        <ScrollingItem>
+          {textItems.map((text, index) => (
+            <Text key={`first-${index}`}>{text}</Text>
+          ))}
+        </ScrollingItem>
+        <ScrollingItem>
+          {textItems.map((text, index) => (
+            <Text key={`second-${index}`}>{text}</Text>
+          ))}
+        </ScrollingItem>
+        <ScrollingItem>
+          {textItems.map((text, index) => (
+            <Text key={`third-${index}`}>{text}</Text>
+          ))}
+        </ScrollingItem>
+      </ScrollingTrack>
     </BannerWrapper>
   );
 };
