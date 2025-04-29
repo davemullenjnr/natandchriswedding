@@ -1,17 +1,8 @@
 'use client';
 
-import React from 'react';
-import styled, { keyframes } from 'styled-components';
-import { breakpoint, color, typography } from '@styles/index'; // Adjust the import path as necessary
-
-const scrollText = keyframes`
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-33.3333%);
-  }
-`;
+import React, { useEffect, useRef, useState } from 'react';
+import styled, { keyframes, css } from 'styled-components';
+import { breakpoint, color, typography } from '@styles/index'; // Adjust path
 
 const BannerWrapper = styled.div`
   position: relative;
@@ -36,14 +27,21 @@ const BannerWrapper = styled.div`
   }
 `;
 
+const createScrollKeyframes = (distance) => keyframes`
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-${distance}px); }
+`;
+
 const ScrollingTrack = styled.div`
   display: flex;
-  width: fit-content;
-  animation: ${scrollText} 15s linear infinite;
+  animation: ${({ scrollWidth, duration }) => css`
+    ${createScrollKeyframes(scrollWidth)} ${duration}s linear infinite
+  `};
 `;
 
 const ScrollingItem = styled.div`
   display: flex;
+  flex-shrink: 0;
 `;
 
 const Text = styled.p`
@@ -55,6 +53,7 @@ const Text = styled.p`
   line-height: 1;
   letter-spacing: 0.1em;
   -webkit-text-stroke: 1px ${color.green[80]};
+  white-space: nowrap;
 
   @media ${breakpoint.sm} {
     font-size: ${typography.size.f4};
@@ -66,24 +65,42 @@ const Text = styled.p`
 `;
 
 const ScrollingBanner = ({ textItems = [] }) => {
+  const baseRef = useRef(null);
+  const [copies, setCopies] = useState(3);
+  const [scrollWidth, setScrollWidth] = useState(0);
+  const animationSpeed = 10; // seconds to scroll one full copy
+
+  useEffect(() => {
+    if (!baseRef.current) return;
+
+    const baseWidth = baseRef.current.scrollWidth;
+    const viewportWidth = window.innerWidth;
+
+    // Ensure enough copies to cover twice the screen width (for seamless effect)
+    const minTotalWidth = viewportWidth * 2;
+    const neededCopies = Math.ceil(minTotalWidth / baseWidth) + 1;
+
+    setScrollWidth(baseWidth);
+    setCopies(neededCopies);
+  }, [textItems]);
+
+  const repeatedContent = Array(copies).fill(textItems).flat();
+
   return (
     <BannerWrapper>
-      <ScrollingTrack>
-        <ScrollingItem>
+      <ScrollingTrack scrollWidth={scrollWidth} duration={animationSpeed}>
+        <ScrollingItem ref={baseRef}>
           {textItems.map((text, index) => (
-            <Text key={`first-${index}`}>{text}</Text>
+            <Text key={`base-${index}`}>{text}</Text>
           ))}
         </ScrollingItem>
-        <ScrollingItem>
-          {textItems.map((text, index) => (
-            <Text key={`second-${index}`}>{text}</Text>
-          ))}
-        </ScrollingItem>
-        <ScrollingItem>
-          {textItems.map((text, index) => (
-            <Text key={`third-${index}`}>{text}</Text>
-          ))}
-        </ScrollingItem>
+        {Array.from({ length: copies - 1 }).map((_, i) => (
+          <ScrollingItem key={`copy-${i}`}>
+            {textItems.map((text, index) => (
+              <Text key={`copy-${i}-${index}`}>{text}</Text>
+            ))}
+          </ScrollingItem>
+        ))}
       </ScrollingTrack>
     </BannerWrapper>
   );
