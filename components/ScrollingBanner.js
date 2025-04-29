@@ -5,11 +5,11 @@ import styled, { keyframes } from 'styled-components';
 import { breakpoint, color, typography } from '@styles/index'; // Adjust the import path as necessary
 
 const scrollText = keyframes`
-  from {
+  0% {
     transform: translateX(0);
   }
-  to {
-    transform: translateX(-50%);
+  100% {
+    transform: translateX(-100%);
   }
 `;
 
@@ -38,8 +38,7 @@ const BannerWrapper = styled.div`
 `;
 
 const ScrollingText = styled.div`
-  display: flex;
-  width: max-content;
+  display: inline-flex;
   white-space: nowrap;
   animation: ${scrollText} 30s linear infinite;
   /* padding-left: 20rem; */
@@ -69,8 +68,11 @@ const ScrollingBanner = ({ textItems = [] }) => {
   return (
     <BannerWrapper>
       <ScrollingText>
-        {repeatedTextItems.map((text, index) => (
-          <Text key={index}>{text}</Text>
+        {textItems.map((text, index) => (
+          <Text key={`first-${index}`}>{text}</Text>
+        ))}
+        {textItems.map((text, index) => (
+          <Text key={`second-${index}`}>{text}</Text>
         ))}
       </ScrollingText>
     </BannerWrapper>
