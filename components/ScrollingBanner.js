@@ -1,8 +1,17 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
-import styled, { keyframes, css } from 'styled-components';
-import { breakpoint, color, typography } from '@styles/index'; // Adjust path
+import React from 'react';
+import styled, { keyframes } from 'styled-components';
+import { breakpoint, color, typography } from '@styles/index';
+
+const scrollText = keyframes`
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+`;
 
 const BannerWrapper = styled.div`
   position: relative;
@@ -27,16 +36,10 @@ const BannerWrapper = styled.div`
   }
 `;
 
-const createScrollKeyframes = (distance) => keyframes`
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-${distance}px); }
-`;
-
 const ScrollingTrack = styled.div`
   display: flex;
-  animation: ${({ scrollWidth, duration }) => css`
-    ${createScrollKeyframes(scrollWidth)} ${duration}s linear infinite
-  `};
+  animation: ${scrollText} 10s linear infinite;
+  width: max-content;
 `;
 
 const ScrollingItem = styled.div`
@@ -65,39 +68,13 @@ const Text = styled.p`
 `;
 
 const ScrollingBanner = ({ textItems = [] }) => {
-  const baseRef = useRef(null);
-  const [copies, setCopies] = useState(3);
-  const [scrollWidth, setScrollWidth] = useState(0);
-  const animationSpeed = 10; // seconds to scroll one full copy
-
-  useEffect(() => {
-    if (!baseRef.current) return;
-
-    const baseWidth = baseRef.current.scrollWidth;
-    const viewportWidth = window.innerWidth;
-
-    // Ensure enough copies to cover twice the screen width (for seamless effect)
-    const minTotalWidth = viewportWidth * 2;
-    const neededCopies = Math.ceil(minTotalWidth / baseWidth) + 1;
-
-    setScrollWidth(baseWidth);
-    setCopies(neededCopies);
-  }, [textItems]);
-
-  const repeatedContent = Array(copies).fill(textItems).flat();
-
   return (
     <BannerWrapper>
-      <ScrollingTrack scrollWidth={scrollWidth} duration={animationSpeed}>
-        <ScrollingItem ref={baseRef}>
-          {textItems.map((text, index) => (
-            <Text key={`base-${index}`}>{text}</Text>
-          ))}
-        </ScrollingItem>
-        {Array.from({ length: copies - 1 }).map((_, i) => (
-          <ScrollingItem key={`copy-${i}`}>
+      <ScrollingTrack>
+        {[...Array(2)].map((_, i) => (
+          <ScrollingItem key={i}>
             {textItems.map((text, index) => (
-              <Text key={`copy-${i}-${index}`}>{text}</Text>
+              <Text key={`${i}-${index}`}>{text}</Text>
             ))}
           </ScrollingItem>
         ))}
