@@ -38,7 +38,7 @@ const BannerWrapper = styled.div`
 
 const ScrollingTrack = styled.div`
   display: flex;
-  animation: ${scrollText} 10s linear infinite;
+  animation: ${scrollText} 30s linear infinite;
   width: max-content;
 `;
 
@@ -54,7 +54,7 @@ const Text = styled.p`
   text-transform: uppercase;
   color: ${color.green[90]};
   line-height: 1;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.3em;
   -webkit-text-stroke: 1px ${color.green[80]};
   white-space: nowrap;
 
