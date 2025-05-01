@@ -8,6 +8,17 @@ import RSVPForm from '@components/RSVPForm';
 import FAQ from '@components/FAQ';
 import { breakpoint, color, typography, width } from '@styles/index';
 import GiftButton from '@components/GiftButton';
+import { getSubdomain } from 'lib/getSubdomain';
+
+export async function getServerSideProps(context) {
+  const { req } = context;
+  const subdomain = getSubdomain(req);
+  const guestType = subdomain === 'evening' ? 'evening' : 'full-day';
+
+  return {
+    props: { guestType },
+  };
+}
 
 const IntroImage = styled.div`
   width: 66%;
@@ -58,7 +69,8 @@ const GiftButtonWrapper = styled.div`
   margin: 0 auto;
 `;
 
-export default function Home() {
+export default function Home({ guestType }) {
+  const isEvening = guestType === 'evening';
   const lyricsOne = [
     'F.E.E.L.I.N.G.C.A.L.L.E.D.L.O.V.E — F.E.E.L.I.N.G.C.A.L.L.E.D.L.O.V.E — F.E.E.L.I.N.G.C.A.L.L.E.D.L.O.V.E — F.E.E.L.I.N.G.C.A.L.L.E.D.L.O.V.E',
   ];
@@ -66,16 +78,31 @@ export default function Home() {
   return (
     <>
       <SEO
-        title='Natalie And Chris Wedding Invite'
+        title={
+          isEvening
+            ? 'Natalie And Chris Evening Reception Invite'
+            : 'Natalie And Chris Wedding Invite'
+        }
         description='Please join us for our wedding on Friday 5th September 2025 at The Castlefield Rooms, Manchester.'
       />
       <IntroImage>
-        <img src='/images/natandchris.svg' alt='Natalie and Chris' />
+        <img
+          src={
+            isEvening
+              ? '/images/natandchrisevening.svg'
+              : '/images/natandchris.svg'
+          }
+          alt='Natalie and Chris'
+        />
       </IntroImage>
       <MainContent keyInfo>
         <KeyInfoTextBlock
           title='Friday 5th September 2025'
-          subtitle='Arrival Time: 12:30 – 1:00pm'
+          subtitle={
+            isEvening
+              ? 'Join us from 7:30pm for drinks and dancing!'
+              : 'Arrival Time: 12:30 – 1:00pm'
+          }
         />
         <KeyInfoTextBlock
           title='The Castlefield Rooms'
@@ -94,20 +121,28 @@ export default function Home() {
           />
           <FAQ
             question="Where's the meeting point when I arrive?"
-            answer='The ceremony will be in the Brindley Room. You should enter via the external staircase on Castle Street, and the bar will be open in the Brindley Room before the ceremony. The evening reception will be held in the Merchant Room.'
+            answer={
+              isEvening
+                ? 'The evening reception will be held in the Merchant Room.'
+                : 'The ceremony will be in the Brindley Room. You should enter via the external staircase on Castle Street, and the bar will be open in the Brindley Room before the ceremony. The evening reception will be held in the Merchant Room.'
+            }
           />
-          <FAQ
-            question='What food will be available on the day?'
-            answer='Once RSVP’d we will send a couple of menu options to you.'
-          />
+          {!isEvening && (
+            <FAQ
+              question='What food will be available on the day?'
+              answer='Once RSVP’d we will send a couple of menu options to you.'
+            />
+          )}
           <FAQ
             question='What is the dress code?'
             answer='Dress to impress and get ready to party!'
           />
-          <FAQ
-            question='Is it okay to take pictures during the wedding?'
-            answer='Yes! We would love for you to take photos and share them with us. Please note that photos are not allowed during the ceremony.'
-          />
+          {!isEvening && (
+            <FAQ
+              question='Is it okay to take pictures during the wedding?'
+              answer='Yes! We would love for you to take photos and share them with us. Please note that photos are not allowed during the ceremony.'
+            />
+          )}
           <FAQ answer='Please drop us a message if you have any other questions' />
         </MainContent>
       </div>
@@ -181,17 +216,26 @@ export default function Home() {
         <MainContent>
           <RSVPTextBlock
             main={
-              <>
-                <b>
-                  Please complete the form below to let us know if you can make
-                  it.
-                </b>
-              </>
+              isEvening ? (
+                <>
+                  <b>
+                    Please let us know if you can make it. We would love you to
+                    be there!
+                  </b>
+                </>
+              ) : (
+                <>
+                  <b>
+                    Please complete the form below to let us know if you can
+                    make it.
+                  </b>
+                </>
+              )
             }
             subtext='Deadline: Friday 23rd May 2025'
           />
         </MainContent>
-        <RSVPForm />
+        {!isEvening && <RSVPForm />}
       </div>
     </>
   );
