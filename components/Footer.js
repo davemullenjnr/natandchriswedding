@@ -10,7 +10,7 @@ const Wrapper = styled.div`
 
   p {
     display: inline-block;
-    color: rgb(0, 0, 0, 0.35);
+    color: rgb(0, 0, 0, 0.25);
   }
 `;
 
