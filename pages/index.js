@@ -135,7 +135,7 @@ export default function Home({ guestType }) {
           )}
           <FAQ
             question='What is the dress code?'
-            answer='Dress to impress and get ready to party!'
+            answer='Look nice, feel nice, be you. Bonus points for shoes you can dance in!'
           />
           {!isEvening && (
             <FAQ
