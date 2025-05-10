@@ -10,8 +10,8 @@ export default function Attending() {
       </Head>
       <AttendanceResponse title='Thank You!'>
         <p>
-          We’re so happy you’ll be joining us on our special day. We can’t to
-          party with you!
+          We’re so happy you’ll be joining us on our special day. We can’t wait
+          to party with you!
         </p>
       </AttendanceResponse>
     </>
