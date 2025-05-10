@@ -148,7 +148,11 @@ const RSVPForm = () => {
 
   return (
     <FormContainer>
-      <FormWrapper action={formAction} method='POST'>
+      <FormWrapper
+        action={formAction}
+        method='POST'
+        className='plausible-event-name=Form'
+      >
         <Group>
           <Label>Will you be attending?</Label>
           <Select

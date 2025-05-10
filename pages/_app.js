@@ -21,6 +21,12 @@ export default function App({ Component, pageProps }) {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <title>Natalie And Chris Wedding Invite</title>
         {/* Override meta tags on individual pages as needed */}
+        <script
+          defer
+          data-domain='thescottwedding.co.uk'
+          src='https://plausible.io/js/script.tagged-events.js'
+        ></script>
+        <link rel='icon' href='/favicon.ico' />
       </Head>
       <ThemeProvider theme={theme}>
         <GlobalStyles />

@@ -38,6 +38,7 @@ export default function GiftButton() {
       href='https://buy.stripe.com/14k9Bd0l61NO1faaEE'
       target='_blank'
       rel='noopener noreferrer'
+      className='plausible-event-name=Gift'
     >
       Give a Gift
     </Button>
