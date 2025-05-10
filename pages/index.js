@@ -232,7 +232,7 @@ export default function Home({ guestType }) {
                 </>
               )
             }
-            subtext='Please RSVP by 25th May'
+            subtext='Please RSVP by Sunday 25th May'
           />
         </MainContent>
         {!isEvening && <RSVPForm />}
