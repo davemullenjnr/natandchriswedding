@@ -16,19 +16,19 @@ const BannerWrapper = styled.div`
   left: 50%;
   transform: translateX(-50%);
   width: 100vw;
-  height: 1rem;
-  margin: 4rem 0;
+  height: 0.5rem;
+  margin: 5rem 0;
   background-color: #4d6051;
   box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.05);
   overflow: visible;
 
   @media ${breakpoint.sm} {
     margin: 6rem 0;
-    height: 1.5rem;
+    height: 1rem;
   }
   @media ${breakpoint.md} {
-    margin: 8rem 0;
-    height: 2rem;
+    margin: 10rem 0;
+    height: 1.5rem;
   }
 `;
 
@@ -42,7 +42,7 @@ const SealImage = styled.img`
     height: 10rem;
   }
   @media ${breakpoint.md} {
-    height: 14rem;
+    height: 12rem;
   }
 `;
 
