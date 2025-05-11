@@ -2,13 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import SEO from '../components/SEO';
 import KeyInfoTextBlock from '@components/KeyInfoTextBlock';
-import ScrollingBanner from '@components/ScrollingBanner';
 import RSVPTextBlock from '@components/RSVPTextBlock';
 import RSVPForm from '@components/RSVPForm';
 import FAQ from '@components/FAQ';
 import { breakpoint, color, typography, width } from '@styles/index';
 import GiftButton from '@components/GiftButton';
 import { getSubdomain } from 'lib/getSubdomain';
+import StaticBanner from '@components/StaticBanner';
 
 export async function getServerSideProps(context) {
   const { req } = context;
@@ -71,9 +71,6 @@ const GiftButtonWrapper = styled.div`
 
 export default function Home({ guestType }) {
   const isEvening = guestType === 'evening';
-  const lyricsOne = [
-    'F.E.E.L.I.N.G.C.A.L.L.E.D.L.O.V.E — F.E.E.L.I.N.G.C.A.L.L.E.D.L.O.V.E — F.E.E.L.I.N.G.C.A.L.L.E.D.L.O.V.E — F.E.E.L.I.N.G.C.A.L.L.E.D.L.O.V.E',
-  ];
 
   return (
     <>
@@ -109,7 +106,8 @@ export default function Home({ guestType }) {
           subtitle='18-20 Castle St, Manchester, M3 4LZ'
         />
       </MainContent>
-      <ScrollingBanner textItems={lyricsOne} />
+      <StaticBanner />
+      {/* <ScrollingBanner textItems={lyricsOne} /> */}
       <div id='faqs'>
         <TitleImage>
           <img src='/images/faqs.svg' alt='FAQs' />
@@ -197,7 +195,8 @@ export default function Home({ guestType }) {
           />
         </MainContent>
       </div>
-      <ScrollingBanner textItems={lyricsOne} />
+      {/* <ScrollingBanner textItems={lyricsOne} /> */}
+      <StaticBanner />
       <div id='gifts'>
         <TitleImage>
           <img src='/images/gifts.svg' alt='Gifts' />

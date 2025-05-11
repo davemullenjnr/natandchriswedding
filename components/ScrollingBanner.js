@@ -22,6 +22,10 @@ const BannerWrapper = styled.div`
   margin-top: 2rem;
   margin-bottom: 2rem;
   width: 100vw;
+  /* ——— iOS Safari fix ——— */
+  isolation: isolate;
+  /* z-index: 0; */
+  transform: translateZ(0);
   background-color: ${color.green[90]};
   overflow: hidden;
   padding: 1.5rem 0;
@@ -37,9 +41,9 @@ const BannerWrapper = styled.div`
 `;
 
 const ScrollingTrack = styled.div`
-  display: flex;
-  animation: ${scrollText} 30s linear infinite;
-  width: max-content;
+  display: inline-flex;
+  gap: 4em;
+  animation: ${scrollText} 20s linear infinite;
 `;
 
 const ScrollingItem = styled.div`
@@ -49,12 +53,12 @@ const ScrollingItem = styled.div`
 
 const Text = styled.p`
   font-family: ${typography.family.headline};
-  margin-right: 4em;
-  font-size: ${typography.size.f5};
+  margin-right: 0;
+  font-size: ${typography.size.f6};
   text-transform: uppercase;
   color: ${color.green[90]};
   line-height: 1;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.4em;
   -webkit-text-stroke: 1px ${color.green[80]};
   white-space: nowrap;
 
@@ -74,7 +78,9 @@ const ScrollingBanner = ({ textItems = [] }) => {
         {[...Array(2)].map((_, i) => (
           <ScrollingItem key={i}>
             {textItems.map((text, index) => (
-              <Text key={`${i}-${index}`}>{text}</Text>
+              <Text key={`${i}-${index}`}>
+                F.E.E.L.I.N.G.C.A.L.L.E.D.L.O.V.E
+              </Text>
             ))}
           </ScrollingItem>
         ))}
