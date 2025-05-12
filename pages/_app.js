@@ -23,6 +23,8 @@ export default function App({ Component, pageProps }) {
           property='og:image'
           content='https://thescottwedding.co.uk/og-image.jpg'
         />
+        <meta property='og:image:width' content='1200' />
+        <meta property='og:image:height' content='630' />
         <title>Natalie And Chris Wedding Invite</title>
         {/* Override meta tags on individual pages as needed */}
         <script
