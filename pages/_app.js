@@ -19,6 +19,10 @@ export default function App({ Component, pageProps }) {
     <>
       <Head>
         <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <meta
+          property='og:image'
+          content='https://thescottwedding.co.uk/og-image.jpg'
+        />
         <title>Natalie And Chris Wedding Invite</title>
         {/* Override meta tags on individual pages as needed */}
         <script
