@@ -231,7 +231,7 @@ export default function Home({ guestType }) {
                 </>
               )
             }
-            subtext='Please RSVP by Sunday 8th June'
+            subtext='Please RSVP by Monday 30th June'
           />
         </MainContent>
         {!isEvening && <RSVPForm />}
