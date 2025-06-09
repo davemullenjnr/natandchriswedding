@@ -32,6 +32,11 @@ export default function App({ Component, pageProps }) {
           data-domain='thescottwedding.co.uk'
           src='https://plausible.io/js/script.tagged-events.js'
         ></script>
+        <script
+          defer
+          data-domain='evening.thescottwedding.co.uk'
+          src='https://plausible.io/js/script.js'
+        ></script>
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <ThemeProvider theme={theme}>
