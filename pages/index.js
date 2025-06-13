@@ -115,7 +115,7 @@ export default function Home({ guestType }) {
         <MainContent biggerGap>
           <FAQ
             question='Are kids welcome?'
-            answer='We want you to relax and enjoy the day, so it’s an adults-only celebration, with a few close family children in attendance.'
+            answer={`We want you to relax and enjoy the ${isEvening ? 'evening' : 'day'}, so it’s an adults-only celebration, with a few close family children in attendance.`}
           />
           <FAQ
             question="Where's the meeting point when I arrive?"
