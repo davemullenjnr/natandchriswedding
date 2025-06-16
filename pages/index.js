@@ -135,6 +135,10 @@ export default function Home({ guestType }) {
             question='What is the dress code?'
             answer='Look nice, feel nice, be you. Bonus points for shoes you can dance in!'
           />
+          <FAQ
+            question='Can I pay with cash at the venue?'
+            answer='Just a heads up — the venue is totally cashless. Make sure to bring a card or have your phone ready for any payments on the day (like drinks at the bar). They won’t accept any cash.'
+          />
           {!isEvening && (
             <FAQ
               question='Is it okay to take pictures during the wedding?'
