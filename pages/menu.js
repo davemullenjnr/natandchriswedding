@@ -156,7 +156,7 @@ export default function Home({ guestType }) {
             <MenuItem title='Shiraz' description='Record Sun — Australia' />
             <MenuItem
               title='Soft Drinks'
-              description='Soft drinks available one the day.'
+              description='Soft drinks available on the day.'
             />
           </MenuSection>
         </MainContent>
