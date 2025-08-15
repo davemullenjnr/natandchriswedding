@@ -15,6 +15,11 @@ const theme = {
 };
 
 export default function App({ Component, pageProps }) {
+  // If the page opts out, render it raw (no header/footer)
+  if (Component.noLayout) {
+    return <Component {...pageProps} />;
+  }
+
   return (
     <>
       <Head>
