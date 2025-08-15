@@ -189,7 +189,7 @@ function Registry({ images }) {
                   alt={img.alt || 'Wedding photo'}
                   width={img.width}
                   height={img.height}
-                  sizes='(min-width: 1080px) 1080px, 100vw'
+                  sizes='(min-width: 1080px) 1350px, 125vw'
                   priority={i < 2}
                   placeholder='blur'
                   blurDataURL={img.blurDataURL}
