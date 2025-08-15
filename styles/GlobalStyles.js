@@ -79,6 +79,7 @@ figure {
 html {
   font-family: sans-serif;
   font-size: 16px;
+  scroll-behavior: smooth;
 }
 
 @media only screen and (min-width: 1536px) {

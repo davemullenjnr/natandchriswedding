@@ -5,17 +5,25 @@ export function middleware(req) {
   const url = new URL(req.url);
   const { hostname, pathname } = url;
 
-  if (!pathname.startsWith('/registry')) return NextResponse.next();
-
-  const allowed =
+  const isPhotosHost =
     hostname === 'photos.thescottwedding.co.uk' ||
     hostname.startsWith('localhost') ||
     hostname.startsWith('127.0.0.1');
 
-  if (allowed) return NextResponse.next();
+  // 1) Gate /registry so it's ONLY visible on photos.*
+  if (pathname.startsWith('/registry') && !isPhotosHost) {
+    return NextResponse.rewrite(new URL('/404', req.url));
+  }
 
-  // 404 for other hosts (or redirect if you prefer)
-  return NextResponse.rewrite(new URL('/404', req.url));
+  // 2) On photos.* root ("/"), show a custom plain page instead of your default homepage
+  if (isPhotosHost && (pathname === '/' || pathname === '')) {
+    return NextResponse.rewrite(new URL('/photos-home', req.url));
+  }
+
+  return NextResponse.next();
 }
 
-export const config = { matcher: ['/registry/:path*'] };
+// Intercept site root and /registry
+export const config = {
+  matcher: ['/', '/registry/:path*'],
+};
