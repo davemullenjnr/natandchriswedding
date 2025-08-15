@@ -152,8 +152,18 @@ function Registry({ images }) {
   return (
     <>
       <Head>
-        <title>Wedding Photos</title>
+        <title>Mr & Mrs Scott — Wedding Photos</title>
         <meta name='robots' content='noindex' />
+        <meta
+          property='og:url'
+          content='https://photos.thescottwedding.co.uk/registry'
+        />
+        <meta
+          property='og:image'
+          content='https://photos.thescottwedding.co.uk/photos-og.jpg'
+        />
+        <meta property='og:image:width' content='1200' />
+        <meta property='og:image:height' content='630' />
       </Head>
       <GlobalStyles />
       <Page id='top'>
