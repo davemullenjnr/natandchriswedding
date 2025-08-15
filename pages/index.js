@@ -229,8 +229,8 @@ export default function Home({ guestType }) {
               ) : (
                 <>
                   <b>
-                    Please complete the form below to let us know if you can
-                    make it.
+                    RSVPs are now closed – thank you so much for getting back to
+                    us. We’re excited to see you soon!
                   </b>
                 </>
               )
@@ -238,7 +238,7 @@ export default function Home({ guestType }) {
             subtext=''
           />
         </MainContent>
-        {!isEvening && <RSVPForm />}
+        {/* {!isEvening && <RSVPForm />} */}
       </div>
     </>
   );
