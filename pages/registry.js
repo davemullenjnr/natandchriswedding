@@ -97,10 +97,12 @@ const ImgWrap = styled.div`
     transition:
       opacity 400ms ease,
       transform 600ms ease;
-    will-change: opacity, transform;
+    /* Removed will-change - it causes crashes on mobile Safari during pinch-to-zoom */
     display: block;
     width: 100%;
     height: auto;
+    /* Allow native zoom behavior on mobile */
+    touch-action: pan-y pinch-zoom;
   }
 
   img.loaded {
