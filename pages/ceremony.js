@@ -3,7 +3,7 @@ import Head from 'next/head';
 import GlobalStyles from '../styles/GlobalStyles';
 import Image from 'next/image';
 import styled from 'styled-components';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { breakpoint, color, typography } from '@styles/index';
 
 const Page = styled.main`
@@ -138,8 +138,33 @@ const BackToTop = styled.a`
 
 function FadeImage(props) {
   const [loaded, setLoaded] = useState(false);
+  const imgRef = useRef(null);
+
+  useEffect(() => {
+    if (!imgRef.current) return;
+
+    // Preload image when it's 500px away from viewport
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Image is near viewport, Next.js will handle loading
+            observer.disconnect();
+          }
+        });
+      },
+      {
+        rootMargin: '500px', // Start loading 500px before image enters viewport
+      },
+    );
+
+    observer.observe(imgRef.current);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <ImgWrap>
+    <ImgWrap ref={imgRef}>
       <Image
         {...props}
         className={loaded ? 'loaded' : ''}
@@ -192,7 +217,7 @@ function Ceremony({ images }) {
                   width={img.width}
                   height={img.height}
                   sizes='(min-width: 1080px) 1350px, 125vw'
-                  priority={i < 2}
+                  priority={i < 5}
                   placeholder='blur'
                   blurDataURL={img.blurDataURL}
                 />
