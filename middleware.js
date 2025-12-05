@@ -15,9 +15,9 @@ export function middleware(req) {
     return NextResponse.rewrite(new URL('/404', req.url));
   }
 
-  // 2) On photos.* root ("/"), show a custom plain page instead of your default homepage
+  // 2) On photos.* root ("/"), show ceremony photos instead of your default homepage
   if (isPhotosHost && (pathname === '/' || pathname === '')) {
-    return NextResponse.rewrite(new URL('/photos-home', req.url));
+    return NextResponse.rewrite(new URL('/ceremony', req.url));
   }
 
   return NextResponse.next();
