@@ -218,7 +218,7 @@ function Ceremony({ images }) {
                   height={img.height}
                   sizes='(min-width: 1080px) 1350px, 125vw'
                   priority={i < 5}
-                  placeholder='blur'
+                  placeholder={img.blurDataURL ? 'blur' : 'empty'}
                   blurDataURL={img.blurDataURL}
                 />
               </Figure>
@@ -262,14 +262,17 @@ export async function getStaticProps() {
     );
 
   const images = await Promise.all(
-    files.map(async (name) => {
+    files.map(async (name, index) => {
       const abs = path.join(dir, name);
       const buf = fs.readFileSync(abs);
       const { width, height } = imageSize(buf) || {};
 
-      // Tiny blurred placeholder
-      const blurBuffer = await sharp(buf).resize(20).blur().toBuffer();
-      const blurDataURL = `data:image/jpeg;base64,${blurBuffer.toString('base64')}`;
+      // Only generate blurDataURL for first 5 images (priority images) to reduce page data size
+      let blurDataURL = undefined;
+      if (index < 5) {
+        const blurBuffer = await sharp(buf).resize(10).blur().toBuffer();
+        blurDataURL = `data:image/jpeg;base64,${blurBuffer.toString('base64')}`;
+      }
 
       return {
         src: `/photos/${name}`,
