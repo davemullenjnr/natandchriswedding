@@ -188,7 +188,7 @@ function Ceremony({ images }) {
         />
         <meta
           property='og:image'
-          content='https://photos.thescottwedding.co.uk/photos-og.jpg'
+          content='https://photos.thescottwedding.co.uk/ceremony-og.jpg'
         />
         <meta property='og:image:width' content='1200' />
         <meta property='og:image:height' content='630' />
