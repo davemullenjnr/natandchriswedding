@@ -10,7 +10,7 @@
     },
     "dependencies": {
         "image-size": "^2.0.2",
-        "next": "latest",
+        "next": "^16.0.7",
         "react": "latest",
         "react-dom": "latest",
         "styled-components": "^5.3.6"
