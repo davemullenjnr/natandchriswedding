@@ -268,19 +268,19 @@ export async function getStaticProps() {
       const { width, height } = imageSize(buf) || {};
 
       // Only generate blurDataURL for first 5 images (priority images) to reduce page data size
-      let blurDataURL = undefined;
-      if (index < 5) {
-        const blurBuffer = await sharp(buf).resize(10).blur().toBuffer();
-        blurDataURL = `data:image/jpeg;base64,${blurBuffer.toString('base64')}`;
-      }
-
-      return {
+      const baseImage = {
         src: `/photos/${name}`,
         width: width || 2160,
         height: height || Math.round((height / width) * 2160) || 1440,
         alt: path.parse(name).name.replace(/[-_]/g, ' '),
-        blurDataURL,
       };
+
+      if (index < 5) {
+        const blurBuffer = await sharp(buf).resize(10).blur().toBuffer();
+        baseImage.blurDataURL = `data:image/jpeg;base64,${blurBuffer.toString('base64')}`;
+      }
+
+      return baseImage;
     }),
   );
 
