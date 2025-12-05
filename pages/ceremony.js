@@ -89,6 +89,7 @@ const ImgWrap = styled.div`
   position: relative;
   overflow: hidden;
   border-radius: 2px;
+  background-color: #191e1c; /* Dark background while image loads */
 
   /* target the real <img> that next/image renders */
   img {
@@ -218,7 +219,7 @@ function Ceremony({ images }) {
                   height={img.height}
                   sizes='(min-width: 1080px) 1350px, 125vw'
                   priority={i < 5}
-                  placeholder={img.blurDataURL ? 'blur' : 'empty'}
+                  placeholder='blur'
                   blurDataURL={img.blurDataURL}
                 />
               </Figure>
@@ -267,20 +268,17 @@ export async function getStaticProps() {
       const buf = fs.readFileSync(abs);
       const { width, height } = imageSize(buf) || {};
 
-      // Only generate blurDataURL for first 5 images (priority images) to reduce page data size
-      const baseImage = {
+      // Generate blurDataURL for all images (smaller size to keep page data reasonable)
+      const blurBuffer = await sharp(buf).resize(8).blur().toBuffer();
+      const blurDataURL = `data:image/jpeg;base64,${blurBuffer.toString('base64')}`;
+
+      return {
         src: `/photos/${name}`,
         width: width || 2160,
         height: height || Math.round((height / width) * 2160) || 1440,
         alt: path.parse(name).name.replace(/[-_]/g, ' '),
+        blurDataURL,
       };
-
-      if (index < 5) {
-        const blurBuffer = await sharp(buf).resize(10).blur().toBuffer();
-        baseImage.blurDataURL = `data:image/jpeg;base64,${blurBuffer.toString('base64')}`;
-      }
-
-      return baseImage;
     }),
   );
 
