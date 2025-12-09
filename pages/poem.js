@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Head from 'next/head';
 import SEO from '../components/SEO';
 import Image from 'next/image';
 import { breakpoint, color, typography, width } from '@styles/index';
@@ -87,10 +88,17 @@ const PoemText = styled.div`
 export default function Poem() {
   return (
     <>
+      <Head>
+        <meta
+          property='og:image'
+          content='https://thescottwedding.co.uk/og-poem.jpg'
+        />
+        <meta property='og:image:width' content='1200' />
+        <meta property='og:image:height' content='630' />
+      </Head>
       <SEO
         title='A Light That Never Goes Out'
         description='Reading by Jen & Gill Scott'
-        image='/og-poem.jpg'
       />
       <MainContent>
         <PoemImage>
