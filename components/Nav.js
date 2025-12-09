@@ -38,7 +38,7 @@ export default function Nav() {
     { label: 'FAQs', href: '#faqs' },
     { label: 'Travel', href: '#travel' },
     { label: 'Gifts', href: '#gifts' },
-    { label: 'RSVP', href: '#rsvp' },
+    { label: 'Poem', href: '/poem' },
   ];
 
   // On non-home pages, modify the hrefs to point to /#section

@@ -5,10 +5,7 @@ export function proxy(req) {
   const url = new URL(req.url);
   const { hostname, pathname } = url;
 
-  const isPhotosHost =
-    hostname === 'photos.thescottwedding.co.uk' ||
-    hostname.startsWith('localhost') ||
-    hostname.startsWith('127.0.0.1');
+  const isPhotosHost = hostname === 'photos.thescottwedding.co.uk';
 
   // 1) Gate /registry so it's ONLY visible on photos.*
   if (pathname.startsWith('/registry') && !isPhotosHost) {
