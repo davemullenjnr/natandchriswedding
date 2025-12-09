@@ -90,6 +90,7 @@ export default function Poem() {
       <SEO
         title='A Light That Never Goes Out'
         description='Reading by Jen & Gill Scott'
+        image='/og-poem.jpg'
       />
       <MainContent>
         <PoemImage>
