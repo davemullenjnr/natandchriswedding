@@ -24,3 +24,4 @@ export function proxy(req) {
 export const config = {
   matcher: ['/', '/registry/:path*'],
 };
+

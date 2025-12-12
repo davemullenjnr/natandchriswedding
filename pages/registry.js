@@ -166,6 +166,11 @@ function Registry({ images }) {
         />
         <meta property='og:image:width' content='1200' />
         <meta property='og:image:height' content='630' />
+        <script
+          defer
+          data-domain='thescottwedding.co.uk'
+          src='https://plausible.io/js/script.tagged-events.js'
+        ></script>
       </Head>
       <GlobalStyles />
       <Page id='top'>
