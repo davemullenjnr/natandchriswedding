@@ -91,29 +91,29 @@ export default function Poem() {
       <Head>
         <meta
           property='og:image'
-          content='https://thescottwedding.co.uk/og-poem.jpg'
+          content='https://thescottwedding.co.uk/og-reading.jpg'
         />
         <meta property='og:image:width' content='1200' />
         <meta property='og:image:height' content='630' />
       </Head>
       <SEO
-        title='A Light That Never Goes Out'
-        description='Reading by Jen & Gill Scott'
+        title='Reading by Jen & Gill Scott'
+        // description='Reading by Jen & Gill Scott'
       />
       <MainContent>
         <PoemImage>
           <Image
-            src='/images/jen-and-gill-poem.jpg'
+            src='/images/jen-and-gill-reading.jpg'
             alt='Jen and Gill'
             width={800}
             height={1000}
             priority
           />
         </PoemImage>
-        <div>
+        {/* <div>
           <Title>A Light That Never Goes Out</Title>
           <Subtitle>Reading by Jen & Gill Scott</Subtitle>
-        </div>
+        </div> */}
 
         <PoemText>
           <p>
